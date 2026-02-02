@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;900&family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-cairo);
+  
+  --color-primary: #B026FF; /* Purple - from reference */
+  --color-primary-dark: #8B1ACC;
+  --color-secondary: #FF007F; /* Magenta - from reference */
+  --color-accent: #00F2FF; /* Cyan - from reference */
+  --color-accent-cyan: #00F2FF;
+  --color-dark-bg: #0A0A1A;
+  --color-card-bg: #12121F;
+  --color-surface: #1A1A2E;
+  --color-green: #34d399;
+}
+
+:root {
+  --background: #0A0A1A;
+  --foreground: #ffffff;
+  --primary-glow: rgba(176, 38, 255, 0.5);
+  --secondary-glow: rgba(255, 0, 127, 0.5);
+  --accent-glow: rgba(0, 242, 255, 0.4);
+  --glass-bg: rgba(10, 10, 26, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Cairo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile scroll fixes */
+@media (max-width: 768px) {
+  html {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+  }
+  
+  body {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+    position: relative;
+  }
+}
+
+/* Redefined Mesh & Grid Background */
+.bg-mesh {
+  background-color: var(--background);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(at 0% 0%, rgba(130, 87, 229, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(255, 0, 94, 0.15) 0px, transparent 50%);
+  background-size: 60px 60px, 60px 60px, 100% 100%, 100% 100%;
+}
+
+.bg-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.bg-cyber-grid {
+  background-image: linear-gradient(to right, #1e293b 1px, transparent 1px), 
+                    linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+}
+
+/* Custom scrollbar for gaming vibe */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05050a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b026ff, #ff007f, #00f2ff);
+  border-radius: 10px;
+}
+
+/* Mobile scrollbar - make it more visible */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #b026ff, #ff007f);
+    border-radius: 6px;
+  }
+  
+  /* Ensure scrollbar is always visible on mobile */
+  body {
+    scrollbar-width: auto;
+    scrollbar-color: #b026ff #05050a;
+  }
+}
+
+/* Enhanced Glassmorphism AAA */
+.glass-aaa {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+}
+
+/* Text Glow Effects refined */
+.text-glow-premium {
+  text-shadow: 0 0 20px rgba(176, 38, 255, 0.5), 0 0 40px rgba(176, 38, 255, 0.3);
+}
+
+/* Diagonal Motion Streaks */
+.motion-streak {
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(176, 38, 255, 0.2), rgba(0, 242, 255, 0.2), transparent);
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes streak-flow {
+  0% { transform: translate(-50%, -50%) rotate(-45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(50%, 50%) rotate(-45deg); opacity: 0; }
+}
+
+.animate-streak {
+  animation: streak-flow 10s linear infinite;
+}
+
+/* AAA Gaming Card */
+.card-gaming {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.card-gaming:hover {
+  transform: perspective(1000px) rotateX(8deg) rotateY(-8deg) translateY(-12px);
+  border-color: var(--color-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(176, 38, 255, 0.2);
+}
+
+/* Mouse Reactive Glow Container */
+.mouse-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.mouse-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 400px at var(--mouse-x) var(--mouse-y), rgba(176, 38, 255, 0.12), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.ar-button-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(6, 182, 212, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+
+/* Performance Optimized Animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Arabic Specific Refinements */
+[dir="rtl"] .tracking-widest {
+  letter-spacing: 0;
+}
+
+/* Material Symbols Support */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+
